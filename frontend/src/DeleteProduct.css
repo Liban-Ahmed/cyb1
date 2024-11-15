@@ -1,0 +1,30 @@
+.red-container {
+    background-color: #C8102E; /* Red background color */
+    padding: 10px; /* Adjust padding as needed */
+    border-bottom-left-radius: 10px; /* Rounded corners at bottom left */
+    border-bottom-right-radius: 10px; /* Rounded corners at bottom right */
+    display: flex; /* Use flexbox layout */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    color: white;
+    font-family: 'Impact', sans-serif;
+  }
+
+  .form-label {
+    color: white;
+    font-family: 'Impact', sans-serif;
+    font-size: 20px; /* Adjust the font size as needed */
+  }
+
+  .rounded-container {
+    border-radius: 10px;
+    
+    overflow: hidden; /* Ensure image stays within rounded container */
+    
+  }
+  
+  

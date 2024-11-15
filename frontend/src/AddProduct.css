@@ -1,0 +1,29 @@
+body {
+    background-color: #F1BE48; /* Set the background color behind all components */
+    
+  }
+  .red-container {
+    background-color: #C8102E; /* Red background color */
+    padding: 10px; /* Adjust padding as needed */
+    border-bottom-left-radius: 10px; /* Rounded corners at bottom left */
+    border-bottom-right-radius: 10px; /* Rounded corners at bottom right */
+    display: flex; /* Use flexbox layout */
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    color: white;
+    font-family: 'Impact', sans-serif;
+  }
+  
+  .form-label {
+    background-color: #C8102E;
+    border-radius: 5px; /* Adjust the radius as needed */
+    color: white; /* Text color for better contrast */
+    padding: 5px 10px; /* Add padding for better appearance */
+    display: inline-block; /* Ensures label takes only the necessary space */
+    
+  }
+  

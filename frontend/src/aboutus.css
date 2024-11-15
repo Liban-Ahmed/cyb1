@@ -1,0 +1,79 @@
+/* aboutus.css */
+.page-banner {
+    margin-bottom: 20px;
+}
+
+.member-photo-card {
+    margin-bottom: 0;
+    width: 300px;
+    height: auto;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    
+}
+
+.member-photo {
+    width: 300px;
+    height: auto;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    
+}
+
+.team-member-details {
+    border-radius: 0.25rem;
+    max-width: 600px; /* Adjusted max-width for smaller info cards */
+    width: 100%; /* Ensure the card takes full width */
+    margin: 0 auto; /* Center the card */
+    padding: 15px; /* Add padding for better spacing */
+    
+}
+
+.member-name {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.member-container {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 100px;
+    margin-left: 100px;
+}
+
+.container-fluid {
+    
+    padding-bottom: 50px;
+}
+
+.page-banner {
+    margin-bottom: 20px;
+    background-color: #C8102E; /* Red background color */
+    color: white; /* Text color */
+    padding: 20px; /* Padding for better spacing */
+    border-radius: 5px; /* Optional: Add rounded corners */
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+  
+  .banner-heading {
+    text-align: left; /* Align heading to the right */
+  }
+  
+  .banner-content {
+    text-align: center; /* Align content to the center */
+    
+  }
+  
+  .mission-heading {
+    font-family: Montserrat, sans-serif;
+    font-size: 30px;
+    font-weight: bold; /* Adjust font weight as needed */
+  }
+  
+  .mission-text {
+    font-size: 20px; /* Font size for the mission text */
+    max-width: 1000px; /* Limit text width for better readability */
+    margin: 0 auto;
+  }
+  

@@ -1,0 +1,45 @@
+.footer-container {
+    background-color: #C8102E;
+    padding: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family: Impact; /* Change the font family here */
+  }
+
+  /* Footer section text color */
+.footer-section button,
+.footer-section p,
+.footer-section a {
+  color: white; /* Set the text color to white for paragraph and anchor elements */
+}
+
+  
+  .footer-background {
+    background-color: #C8102E;
+  }
+  
+  .footer {
+    width: 100%;
+    
+  }
+  
+  .footer-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .footer-button:hover {
+    text-decoration: underline;
+  }
+  
+  /* Headers */
+  .footer-section h3 {
+    color: #F1BE48;
+  }
+  

@@ -1,0 +1,173 @@
+.search-bar-container {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #F1BE48; /* Set the desired background color */
+    padding: 40px; /* Adjust padding as needed */
+    width: 100%; /* Let the search bar container take full width */
+    display: left;
+    
+}
+
+.custom-search-button {
+    background-color: #F1BE48;
+    border-color: #F1BE48;
+    padding: 5px 10px;
+}
+
+.custom-label {
+    color: white;
+    background-color: #F1BE48;
+    border-color: #F1BE48;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+    background-color: #F1BE48;
+}
+
+.search-input-container {
+    max-width: 600px; /* Set the maximum width for the content inside the container */
+    margin: 0 auto; /* Center the content horizontally within the container */
+    margin-left: 0px;
+    margin-bottom: 20px;
+    width: 45%
+}
+.search-button-container {
+    margin-top: 10px; /* Add some space between the input and button */
+}
+
+.search-button-container {
+    margin-top: 5px; /* Adjust the margin as needed */
+  }
+  
+  .row-cols-1 {
+    margin-left: 20px; /* Adjust the left margin as needed */
+    margin-right: 20px; /* Adjust the right margin as needed */
+    margin-bottom: 15px;
+  }
+
+  .text-muted{
+
+    margin-left: 15px;
+
+  }
+  
+  .card {
+    background-color: #C8102E; /* Set the desired background color */
+    border-radius: 5px; /* Optionally, add border radius for rounded corners */
+    padding: 15px; /* Add padding for spacing inside the card */
+    margin-bottom: 15px; /* Add margin bottom for spacing between cards */
+    border-radius: 10px;
+  }
+
+  .image-container {
+    background-color: white;
+    display: flex;
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    padding: 10px; /* Add padding for spacing around the image */
+    border-radius: 10px;
+    height: 350px; /* Set a fixed height for the image container */
+    overflow: hidden; /* Hide any overflow from images that exceed the container */
+  }
+
+  .image-container img {
+    width: auto; /* Allow the width of the image to adjust based on its aspect ratio */
+    height: 350px; /* Ensure the image fills the height of the container */
+    object-fit: cover; /* Crop the image to cover the container while preserving its aspect ratio */
+  }
+
+  .card-title,
+.card-text {
+  color: white; /* Set text color to white */
+  font-family: 'Impact', sans-serif; /* Use Impact font */
+}
+.card img {
+    width: auto; /* Ensure the image fills its container horizontally */
+    height: auto; /* Ensure the image fills its container vertically */
+    object-fit: cover; /* Crop the image to fill the container while preserving its aspect ratio */
+    border-radius: 10px;
+    background-color: #F1BE48;
+  }
+  
+  body {
+    background-color: #F1BE48; /* Set the background color behind all components */
+    
+  }
+  .card {
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card .btn {
+    background-color: #C8102E;
+    border-color: #C8102E;
+  }
+  
+  .card .btn:hover {
+    background-color: #a60823;
+    border-color: #a60823;
+  }
+  
+  
+  
+  .card-body {
+    padding: 15px;
+    
+  }
+  
+  .card-title,
+  .card-text {
+    margin: 0;
+    color: white;
+  }
+  
+  .card-text {
+    margin-bottom: 10px;
+  }
+  
+  .product-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-details h5,
+  .product-details h6 {
+    margin: 0;
+  }
+  
+  .product-details h6 {
+    color: #C8102E;
+  }
+
+  /* Add this CSS to show and hide buttons on hover */
+.card:hover .add-to-cart-btn,
+.card:hover .view-item-btn {
+  display: block;
+}
+
+.add-to-cart-btn,
+.view-item-btn {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+
+
+.view-item-btn {
+  background-color: #F1BE48;
+}
+
+  
+  
+  
