@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Catalog.css"; // Import your CSS file for Catalog styling
-import { useCart } from "./CartContext";
+import { useCart } from "../Cart/CartContext";
 
 const Catalog = () => {
   const [products, setProducts] = useState([]);
