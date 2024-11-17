@@ -35,7 +35,7 @@ const Register = () => {
       <form onSubmit={handleSubmit} className="auth-form">
         <div className="mb-3">
           <label htmlFor="username" className="form-label">
-            Username:
+            Name:
           </label>
           <input
             type="text"

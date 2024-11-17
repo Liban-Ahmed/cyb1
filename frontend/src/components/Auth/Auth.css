@@ -5,6 +5,7 @@
     background-color: #F1BE48;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 33%;
   }
   
   .auth-form .form-label {
@@ -46,4 +47,16 @@
       border-top-right-radius: .3rem;
       border-bottom-right-radius: .3rem;
     }
+  }
+  .home-container {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .home-header {
+    position: absolute;
+    bottom: 10;
   }

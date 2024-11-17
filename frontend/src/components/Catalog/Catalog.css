@@ -1,7 +1,7 @@
 .search-bar-container {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    background-color: #F1BE48; /* Set the desired background color */
+    background-color: whitesmoke; /* Set the desired background color */
     padding: 40px; /* Adjust padding as needed */
     width: 100%; /* Let the search bar container take full width */
     display: left;
@@ -94,7 +94,7 @@
   }
   
   body {
-    background-color: #F1BE48; /* Set the background color behind all components */
+    background-color: whitesmoke; /* Set the background color behind all components */
     
   }
   .card {
