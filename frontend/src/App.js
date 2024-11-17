@@ -12,6 +12,7 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/footer";
 import { AuthProvider } from "./components/Auth/AuthContext";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={<UserProfile />} />
           <Route path="/register" element={<Register />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/add-product" element={<AddProduct />} />

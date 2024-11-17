@@ -19,7 +19,7 @@ const Login = () => {
       const data = await response.json();
       if (response.ok) {
         alert("Logged in successfully!");
-        navigate("/catalog");
+        navigate("/profile");
       } else {
         alert(data.message || "Login failed");
       }

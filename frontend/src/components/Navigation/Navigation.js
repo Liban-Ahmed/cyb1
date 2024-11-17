@@ -3,9 +3,11 @@ import "./Navigation.css";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "./iowastate.png";
 import title from "./CycloneStore.png";
+import axios from "axios";
 
 const Navigation = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,6 +19,10 @@ const Navigation = () => {
         });
         const data = await response.json();
         setIsAuthenticated(data.isAuthenticated);
+        if (data.isAuthenticated) {
+          const userProfileResponse = await axios.get("/profile");
+          setUser(userProfileResponse.data);
+        }
       } catch (error) {
         console.error("Error checking authentication:", error);
       }
@@ -65,7 +71,11 @@ const Navigation = () => {
                     View Cart
                   </Link>
                 </li>
-                {/* Add more authenticated routes */}
+                <li className="nav-item">
+                  <Link to="/profile" className="nav-link">
+                    Profile
+                  </Link>
+                </li>
                 <li className="nav-item">
                   <button
                     onClick={handleLogout}
@@ -73,6 +83,17 @@ const Navigation = () => {
                   >
                     Logout
                   </button>
+                </li>
+                <li className="nav-item">
+                  {user.avatar ? (
+                    <img
+                      src={`/uploads/${user.avatar}`}
+                      alt="Avatar"
+                      style={{ width: 30, height: 30, borderRadius: "50%" }}
+                    />
+                  ) : (
+                    <span>Profile</span>
+                  )}
                 </li>
               </>
             )}

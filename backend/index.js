@@ -197,7 +197,40 @@ function ensureAuthenticated(req, res, next) {
   }
   res.status(401).json({ message: "Please log in to access this resource." });
 }
+// User Profile Routes
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+// Update user profile
+app.put("/profile", upload.single("avatar"), async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { name, bio } = req.body;
+    const avatar = req.file ? req.file.filename : null;
 
+    // Update user profile in database
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { name, bio, avatar },
+      { new: true }
+    );
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error updating profile" });
+  }
+});
+
+// Get user profile
+app.get("/profile", async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const user = await User.findById(userId);
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching profile" });
+  }
+});
 // Product Routes using Native MongoDB Driver
 
 // Get all products
