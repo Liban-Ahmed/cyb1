@@ -1,14 +1,31 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./footer.css";
 
-const Footer = ({ handleNavigation }) => {
+const Footer = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="footer-container">
+    <footer className="footer-container">
       <div className="footer-section">
         <h3>Navigation Links</h3>
-        <ul>
-        <li><button onClick={() => handleNavigation("catalog")}>Catalog</button></li>
-        <li><button onClick={() => handleNavigation("aboutUs")}>About Us</button></li>
+        <ul className="footer-links">
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => navigate("/catalog")}
+            >
+              Catalog
+            </button>
+          </li>
+          <li>
+            <button
+              className="footer-link-btn"
+              onClick={() => navigate("/about-us")}
+            >
+              About Us
+            </button>
+          </li>
         </ul>
       </div>
       <div className="footer-section footer-contact">
@@ -23,9 +40,11 @@ const Footer = ({ handleNavigation }) => {
       </div>
       <div className="footer-section footer-top">
         <h3>Back to Top</h3>
-        <a href="#top">Back to Top</a>
+        <a href="#top" className="back-to-top-link">
+          Back to Top
+        </a>
       </div>
-    </div>
+    </footer>
   );
 };
 

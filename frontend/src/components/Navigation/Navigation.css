@@ -1,7 +1,8 @@
 /* Navigation Styles */
 .navigation-container {
-  background-color: #C8102E;
-  padding: 10px 20px;
+  background-color: #2B2B2B; /* Matches the footer background color for consistency */
+  padding: 15px 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navigation-title-container {
@@ -24,7 +25,7 @@
 .avatar-placeholder {
   width: 35px; /* Size for the avatar placeholder */
   height: 35px;
-  background-color: #F1BE48; /* Placeholder color */
+  background-color: #F1BE48; /* Placeholder color to match footer's theme */
   color: #ffffff; /* Text color */
   display: flex;
   justify-content: center;
@@ -35,9 +36,86 @@
   text-transform: uppercase;
   font-family: 'Arial', sans-serif; /* Simple font for better readability */
   transition: background-color 0.3s ease; /* Smooth transition on hover */
+  cursor: pointer;
 }
 
 .avatar-placeholder:hover {
   background-color: #e09f32; /* Darker shade for hover effect */
+}
+
+/* SVG Styling for Cart Icon */
+.feather.feather-shopping-cart {
+  color: white; /* Set the cart icon color to white */
+  transition: color 0.3s ease; /* Smooth transition for color changes */
+  width: 28px; /* Adjusted to make sure it fits better */
+  height: 28px;
+}
+
+.feather.feather-shopping-cart:hover {
+  color: #e09f32; /* Hover color for the cart icon */
+}
+
+/* Prevent Cart Icon from Getting Cut Off */
+.cart-icon {
+  padding-left: 10px; /* Add some padding to give space around the icon */
+  padding-right: 10px;
+}
+
+/* Ensure all navigation items have enough margin */
+.nav-item {
+  margin-right: 15px; /* Adds enough space between each navigation item */
+}
+
+/* Cart Item Specific Styling to Ensure Visibility */
+.cart-item {
+  display: flex;
+  align-items: center;
+  padding: 0 10px; /* Add padding to avoid being cut off */
+}
+
+/* Navigation Links Styling */
+.navigation-links {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.navigation-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.navigation-link:hover {
+  color: #f1be48; /* Highlight color */
+}
+
+.button-link {
+  background: none;
+  border: none;
   cursor: pointer;
+  color: white;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.button-link:hover {
+  color: #f1be48; /* Highlight color */
+}
+
+/* Navigation Content Wrapper */
+.navigation-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
 }

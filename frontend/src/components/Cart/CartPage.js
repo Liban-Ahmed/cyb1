@@ -95,7 +95,6 @@ const CartPage = () => {
   const [productsDetails, setProductsDetails] = useState({});
   const [total, setTotal] = useState(0);
   const [showCheckout, setShowCheckout] = useState(false); // State to toggle checkout page visibility
-  
 
   useEffect(() => {
     const fetchProductDetails = async () => {
@@ -139,41 +138,45 @@ const CartPage = () => {
   }
 
   return (
-    <div className="cart-container" style={{ backgroundColor: "#F1BE48"}}>
-      <div><h2 style={{ color: "black" }}>Cart:</h2></div>
-      <div className="cart-items"style={{marginTop:"50px"}}>
-      {Object.values(productsDetails).map((product) => (
-  <div key={product.id} className="cart-item">
-    <div className="cart-item-image-container" style={{borderRadius:"10px"}}>
-      <img
-        src={product.image}
-        alt={product.title}
-        className="cart-item-image"
-        style={{borderRadius:"10px"}}
-      />
-    </div>
-    <div className="cart-item-details">
-      <div className="cart-item-header"style={{fontWeight: "bold"}}>
-        <h3>{product.title}</h3>
-       
+    <div className="cart-container" style={{ backgroundColor: "whitesmoke" }}>
+      <div>
+        <h2 style={{ color: "black" }}>Cart:</h2>
       </div>
-      <p className="cart-item-category">{product.category}</p>
-      <div className="cart-item-quantity">
-      <span>Quantity: {product.quantity}</span>
-        <button onClick={() => removeFromCart(product.id)} className="quantity-button" style={{fontSize:"30px"}}>
-          -
-        </button>
-        
-        
-      </div>
-    </div>
-    <div className="cart-item-price">
-      <p>${(product.price * product.quantity).toFixed(2)}</p>
-    </div>
-  </div>
-))}
-
-
+      <div className="cart-items" style={{ marginTop: "50px" }}>
+        {Object.values(productsDetails).map((product) => (
+          <div key={product.id} className="cart-item">
+            <div
+              className="cart-item-image-container"
+              style={{ borderRadius: "10px" }}
+            >
+              <img
+                src={product.image}
+                alt={product.title}
+                className="cart-item-image"
+                style={{ borderRadius: "10px" }}
+              />
+            </div>
+            <div className="cart-item-details">
+              <div className="cart-item-header" style={{ fontWeight: "bold" }}>
+                <h3>{product.title}</h3>
+              </div>
+              <p className="cart-item-category">{product.category}</p>
+              <div className="cart-item-quantity">
+                <span>Quantity: {product.quantity}</span>
+                <button
+                  onClick={() => removeFromCart(product.id)}
+                  className="quantity-button"
+                  style={{ fontSize: "30px" }}
+                >
+                  -
+                </button>
+              </div>
+            </div>
+            <div className="cart-item-price">
+              <p>${(product.price * product.quantity).toFixed(2)}</p>
+            </div>
+          </div>
+        ))}
       </div>
       <div className="cart-summary">
         <h3>Summary</h3>

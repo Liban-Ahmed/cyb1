@@ -6,6 +6,7 @@
   min-height: 600px; /* Set the initial height to 100% */
   flex-grow: 1; /* Allow the container to grow */
   flex-shrink: 0; /* Prevent the container from shrinking */
+  background-color: #2B2B2B;
 }
 
 .cart-layout {
@@ -87,36 +88,6 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
-}
-
-/* Form and Summary Sections */
-.form-section, .summary-section {
-  width: 48%;
-}
-
-/* Input Styling */
-.input-field {
-  width: 100%;
-  padding: 8px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* Button Styling */
-.save-button {
-  background-color: #C8102E; /* Adjust the color to match your theme */
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-}
-
-.save-button:hover {
-  background-color: #9a0721;
 }
 
 /* Delivery Options */

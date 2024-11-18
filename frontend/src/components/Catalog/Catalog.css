@@ -1,173 +1,220 @@
+/* Catalog Container */
+.catalog-container {
+  background-color: #2B2B2B; /* Matches the header and footer background color for consistency */
+}
+
+/* Search Bar Container */
 .search-bar-container {
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    background-color: whitesmoke; /* Set the desired background color */
-    padding: 40px; /* Adjust padding as needed */
-    width: 100%; /* Let the search bar container take full width */
-    display: left;
-    
+  border-radius: 5px;
+  background: #2B2B2B; /* Matches header and footer */
+  padding: 20px 40px; /* Adjust padding for better alignment */
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adds depth similar to header */
 }
 
-.custom-search-button {
-    background-color: #F1BE48;
-    border-color: #F1BE48;
-    padding: 5px 10px;
-}
-
+/* Custom Label */
 .custom-label {
-    color: white;
-    background-color: #F1BE48;
-    border-color: #F1BE48;
-    padding: 5px;
-    border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 20px;
+  font-family: 'Impact', sans-serif;
+  color: #ffffff; /* Set label text color to white for better contrast */
 }
 
-.container-fluid {
-    padding-right: 0px;
-    padding-left: 0px;
-    background-color: #F1BE48;
+/* Custom Search Button */
+.custom-search-button {
+  padding: 5px 15px;
+  font-size: 18px;
+  font-family: 'Impact', sans-serif;
+  background-color: #F1BE48; /* Accent color for button */
+  border: none;
+  color: #2B2B2B; /* Matches header background for readability */
+  transition: background-color 0.3s ease;
 }
 
-.search-input-container {
-    max-width: 600px; /* Set the maximum width for the content inside the container */
-    margin: 0 auto; /* Center the content horizontally within the container */
-    margin-left: 0px;
-    margin-bottom: 20px;
-    width: 45%
-}
-.search-button-container {
-    margin-top: 10px; /* Add some space between the input and button */
+.custom-search-button:hover {
+  background-color: #e09f32; /* Darker shade for hover effect */
 }
 
-.search-button-container {
-    margin-top: 5px; /* Adjust the margin as needed */
-  }
-  
-  .row-cols-1 {
-    margin-left: 20px; /* Adjust the left margin as needed */
-    margin-right: 20px; /* Adjust the right margin as needed */
-    margin-bottom: 15px;
-  }
+/* Sort Button */
+.sort-button {
+  background-color: #F1BE48; /* Accent color */
+  padding: 8px 15px;
+  font-size: 18px;
+  font-family: 'Impact', sans-serif;
+  color: #2B2B2B;
+  border: none;
+  transition: background-color 0.3s ease;
+}
 
-  .text-muted{
+.sort-button:hover {
+  background-color: #e09f32; /* Darker shade for hover effect */
+}
 
-    margin-left: 15px;
+/* Show All Products Button */
+.show-all-products-btn {
+  background-color: #F1BE48;
+  color: #2B2B2B;
+  margin-left: 11px;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Impact', sans-serif;
+  transition: background-color 0.3s ease;
+}
 
-  }
-  
-  .card {
-    background-color: #C8102E; /* Set the desired background color */
-    border-radius: 5px; /* Optionally, add border radius for rounded corners */
-    padding: 15px; /* Add padding for spacing inside the card */
-    margin-bottom: 15px; /* Add margin bottom for spacing between cards */
-    border-radius: 10px;
-  }
+.show-all-products-btn:hover {
+  background-color: #e09f32;
+}
 
-  .image-container {
-    background-color: white;
-    display: flex;
-    justify-content: center; /* Horizontally center the content */
-    align-items: center; /* Vertically center the content */
-    padding: 10px; /* Add padding for spacing around the image */
-    border-radius: 10px;
-    height: 350px; /* Set a fixed height for the image container */
-    overflow: hidden; /* Hide any overflow from images that exceed the container */
-  }
+/* Selected Product Container */
+.selected-product-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .image-container img {
-    width: auto; /* Allow the width of the image to adjust based on its aspect ratio */
-    height: 350px; /* Ensure the image fills the height of the container */
-    object-fit: cover; /* Crop the image to cover the container while preserving its aspect ratio */
-  }
+/* Selected Product Styling */
+.selected-product {
+  max-width: 80%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  background-color: #2B2B2B; /* Matches the background */
+  color: #ffffff;
+}
 
-  .card-title,
+/* Selected Product Image */
+.selected-product-image {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.selected-product-image img {
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+/* Selected Product Details */
+.selected-product-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.selected-product-details h2,
+.selected-product-details h3,
+.selected-product-details p {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #ffffff; /* Text color to match the header */
+}
+
+/* Selected Product Actions */
+.selected-product-actions {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+
+.selected-product-actions .btn {
+  background-color: #F1BE48;
+  color: #2B2B2B;
+  border-radius: 10px;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.selected-product-actions .btn:hover {
+  background-color: #e09f32;
+}
+
+/* Product Catalog */
+.product-catalog {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+/* Product Card */
+.product-card {
+  background-color: #2B2B2B; /* Accent color */
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Image Container */
+.image-container {
+  background-color: #ffffff; /* White background for images */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  height: 350px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: auto;
+  height: 350px;
+  object-fit: cover;
+}
+
+/* Card Title and Text */
+.card-title,
 .card-text {
-  color: white; /* Set text color to white */
-  font-family: 'Impact', sans-serif; /* Use Impact font */
-}
-.card img {
-    width: auto; /* Ensure the image fills its container horizontally */
-    height: auto; /* Ensure the image fills its container vertically */
-    object-fit: cover; /* Crop the image to fill the container while preserving its aspect ratio */
-    border-radius: 10px;
-    background-color: #F1BE48;
-  }
-  
-  body {
-    background-color: whitesmoke; /* Set the background color behind all components */
-    
-  }
-  .card {
-    border: none;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card .btn {
-    background-color: #C8102E;
-    border-color: #C8102E;
-  }
-  
-  .card .btn:hover {
-    background-color: #a60823;
-    border-color: #a60823;
-  }
-  
-  
-  
-  .card-body {
-    padding: 15px;
-    
-  }
-  
-  .card-title,
-  .card-text {
-    margin: 0;
-    color: white;
-  }
-  
-  .card-text {
-    margin-bottom: 10px;
-  }
-  
-  .product-details {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .product-details h5,
-  .product-details h6 {
-    margin: 0;
-  }
-  
-  .product-details h6 {
-    color: #C8102E;
-  }
-
-  /* Add this CSS to show and hide buttons on hover */
-.card:hover .add-to-cart-btn,
-.card:hover .view-item-btn {
-  display: block;
+  color: #ffffff; /* White text for contrast */
+  font-family: 'Impact', sans-serif;
 }
 
+.card .btn {
+  background-color: #F1BE48;
+  border: none;
+  color: #2B2B2B;
+  font-family: 'Impact', sans-serif;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+}
+
+.card .btn:hover {
+  background-color: #e09f32;
+}
+
+/* Price Text */
+.price-text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 20px;
+}
+
+/* Add to Cart and View Item Buttons */
 .add-to-cart-btn,
 .view-item-btn {
-  display: none;
   position: absolute;
   bottom: 10px;
   right: 10px;
-}
-
-
-
-.view-item-btn {
   background-color: #F1BE48;
+  color: #2B2B2B;
+  border: none;
+  font-family: 'Impact', sans-serif;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
 }
 
-  
-  
-  
+.add-to-cart-btn:hover,
+.view-item-btn:hover {
+  background-color: #e09f32;
+}

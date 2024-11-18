@@ -1,45 +1,93 @@
-.footer-container {
-    background-color: #C8102E;
-    padding: 20px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    font-family: Impact; /* Change the font family here */
-  }
-
-  /* Footer section text color */
-.footer-section button,
-.footer-section p,
-.footer-section a {
-  color: white; /* Set the text color to white for paragraph and anchor elements */
+body, html {
+  height: 100%; /* Set the body and html to occupy full height */
+  margin: 0; /* Remove any default margin */
+  font-family: Arial, sans-serif;
+  display: flex; /* Set flex to make the body take the entire height */
+  flex-direction: column;
 }
 
-  
-  .footer-background {
-    background-color: #C8102E;
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full height of viewport */
+}
+
+.main-content {
+  flex: 1; /* Allow the main content to grow and take the remaining space */
+  padding: 20px; /* Optional: Add padding for spacing */
+}
+
+.footer-container {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #f1be48;
+}
+
+.footer-section p {
+  margin: 5px 0;
+  line-height: 1.6;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-link-btn {
+  background: none;
+  border: none;
+  color: #f1be48;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-link-btn:hover,
+.back-to-top-link:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.back-to-top-link {
+  color: #f1be48;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.footer-top {
+  text-align: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
   }
-  
-  .footer {
-    width: 100%;
-    
+
+  .footer-section {
+    margin-bottom: 20px;
   }
-  
-  .footer-button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .footer-button:hover {
-    text-decoration: underline;
-  }
-  
-  /* Headers */
-  .footer-section h3 {
-    color: #F1BE48;
-  }
-  
+}

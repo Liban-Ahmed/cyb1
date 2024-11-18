@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./UserProfile.css"; // Import your new CSS file
 
 const UserProfile = () => {
   const [profile, setProfile] = useState(null);
-  const [file, setFile] = useState(null);
   const [editing, setEditing] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch the current user's profile data
     const fetchProfile = async () => {
       try {
         const response = await fetch("http://localhost:2000/profile", {
@@ -33,27 +32,16 @@ const UserProfile = () => {
     setProfile((prevProfile) => ({ ...prevProfile, [name]: value }));
   };
 
-  const handleFileChange = (e) => {
-    setFile(e.target.files[0]);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("name", profile.name);
-    formData.append("bio", profile.bio);
-    if (file) {
-      formData.append("avatar", file);
-    }
-
     try {
       const response = await fetch("http://localhost:2000/profile", {
         method: "PUT",
         credentials: "include",
-        body: formData,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(profile),
       });
       const data = await response.json();
-      console.log("Server response:", data); // Log server response
       if (response.ok) {
         alert("Profile updated successfully");
         setProfile(data);
@@ -71,31 +59,24 @@ const UserProfile = () => {
   }
 
   return (
-    <div className="profile-container">
-      <h2>User Profile</h2>
+    <div className="profile-container container">
+      <h2 className="text-center mb-4 profile-title">User Profile</h2>
 
       {!editing ? (
-        <div className="profile-info">
-          <div>
-            <img
-              src={
-                profile.avatar
-                  ? `http://localhost:2000/uploads/${profile.avatar}`
-                  : "https://via.placeholder.com/150"
-              }
-              alt="User Avatar"
-              className="img-fluid rounded-circle"
-              style={{ width: "150px", height: "150px" }}
-            />
+        <div className="profile-info card">
+          <div className="card-body text-center">
+            <div className="avatar-placeholder mx-auto">
+              {profile.name ? profile.name.charAt(0).toUpperCase() : "U"}
+            </div>
+            <h3 className="card-title mt-3 profile-name">{profile.name}</h3>
+            <p className="card-text profile-bio">Bio: {profile.bio}</p>
+            <button
+              className="btn btn-primary mt-3"
+              onClick={() => setEditing(true)}
+            >
+              Edit Profile
+            </button>
           </div>
-          <h3>{profile.name}</h3>
-          <p>{profile.bio}</p>
-          <button
-            className="btn btn-primary mt-3"
-            onClick={() => setEditing(true)}
-          >
-            Edit Profile
-          </button>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="profile-form">
@@ -124,18 +105,6 @@ const UserProfile = () => {
               value={profile.bio}
               onChange={handleInputChange}
               required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="avatar" className="form-label">
-              Avatar:
-            </label>
-            <input
-              type="file"
-              id="avatar"
-              name="avatar"
-              className="form-control"
-              onChange={handleFileChange}
             />
           </div>
           <button type="submit" className="btn btn-secondary">

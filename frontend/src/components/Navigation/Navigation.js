@@ -47,7 +47,7 @@ const Navigation = () => {
   return (
     <div className="navigation-container bg-gray-800 p-3">
       <div className="navigation-title-container d-flex justify-content-between align-items-center">
-        {/* Logo and Title */}
+        {/* Logo */}
         <div className="d-flex align-items-center">
           <Link to="/">
             <img
@@ -60,20 +60,15 @@ const Navigation = () => {
 
         {/* Navigation Links */}
         <nav>
-          <ul className="nav nav-pills mb-0">
-            <li className="nav-item">
+          <ul className="nav nav-pills mb-0 align-items-center">
+            <li className="nav-item me-3">
               <Link to="/catalog" className="nav-link text-white">
                 Catalog
               </Link>
             </li>
             {isAuthenticated ? (
               <>
-                <li className="nav-item">
-                  <Link to="/cart" className="nav-link text-white">
-                    View Cart
-                  </Link>
-                </li>
-                <li className="nav-item">
+                <li className="nav-item me-3">
                   <button
                     onClick={handleLogout}
                     className="nav-link btn btn-link text-white"
@@ -81,9 +76,9 @@ const Navigation = () => {
                     Logout
                   </button>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item me-3">
                   <div
-                    className="avatar-placeholder ms-3"
+                    className="avatar-placeholder"
                     onClick={() => navigate("/profile")}
                     style={{ cursor: "pointer" }}
                   >
@@ -92,15 +87,35 @@ const Navigation = () => {
                       : "U"}
                   </div>
                 </li>
+                <li className="nav-item">
+                  <Link to="/cart" className="nav-link text-white cart-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="feather feather-shopping-cart"
+                    >
+                      <circle cx="9" cy="21" r="1"></circle>
+                      <circle cx="20" cy="21" r="1"></circle>
+                      <path d="M1 1h4l2.68 13.39a1 1 0 0 0 .99.81h12.72a1 1 0 0 0 .98-.76l3.38-12.64H5.21"></path>
+                    </svg>
+                  </Link>
+                </li>
               </>
             ) : (
               <>
-                <li className="nav-item">
+                <li className="nav-item me-3">
                   <Link to="/login" className="nav-link text-white">
                     Log In
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item me-3">
                   <Link to="/register" className="nav-link text-white">
                     Register
                   </Link>
