@@ -1,125 +1,155 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
-  const [user, setUser] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [name, setName] = useState("");
-  const [bio, setBio] = useState("");
-  const [avatar, setAvatar] = useState(null);
-  const [profilePicture, setProfilePicture] = useState(null);
+  const [profile, setProfile] = useState(null);
+  const [file, setFile] = useState(null);
+  const [editing, setEditing] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Check authentication status
-    const checkAuth = async () => {
+    // Fetch the current user's profile data
+    const fetchProfile = async () => {
       try {
-        const response = await fetch("http://localhost:2000/check-auth", {
+        const response = await fetch("http://localhost:2000/profile", {
           credentials: "include",
         });
         const data = await response.json();
-        if (data.isAuthenticated) {
-          const userProfileResponse = await axios.get("/profile");
-          setUser(userProfileResponse.data);
-          if (userProfileResponse.data.avatar) {
-            setProfilePicture(`/uploads/${userProfileResponse.data.avatar}`);
-          }
+        if (response.ok) {
+          setProfile(data);
+        } else {
+          alert("Failed to load profile");
         }
       } catch (error) {
-        console.error("Error checking authentication:", error);
-      } finally {
-        setLoading(false);
+        console.error("Error fetching profile:", error);
       }
     };
-    checkAuth();
+
+    fetchProfile();
   }, []);
 
-  const handleUpdateProfile = async (event) => {
-    event.preventDefault();
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setProfile((prevProfile) => ({ ...prevProfile, [name]: value }));
+  };
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("bio", bio);
-    if (avatar) {
-      formData.append("avatar", avatar);
+    formData.append("name", profile.name);
+    formData.append("bio", profile.bio);
+    if (file) {
+      formData.append("avatar", file);
     }
 
     try {
-      const response = await axios.put("/profile", formData);
-      if (response.status === 200) {
-        setUser(response.data);
-        if (response.data.avatar) {
-          setProfilePicture(`/uploads/${response.data.avatar}`);
-        }
-        setError(null);
+      const response = await fetch("http://localhost:2000/profile", {
+        method: "PUT",
+        credentials: "include",
+        body: formData,
+      });
+      const data = await response.json();
+      console.log("Server response:", data); // Log server response
+      if (response.ok) {
+        alert("Profile updated successfully");
+        setProfile(data);
+        setEditing(false);
       } else {
-        setError(`Error updating profile: ${response.status}`);
+        alert("Failed to update profile: " + (data.message || "Unknown error"));
       }
     } catch (error) {
       console.error("Error updating profile:", error);
-      setError("Error updating profile. Please try again.");
     }
   };
 
-  if (loading) {
+  if (!profile) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className="container">
-      <h2 className="text-center mt-5 mb-5">Update Profile</h2>
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <form onSubmit={handleUpdateProfile}>
-            <div className="form-group">
-              <label>Name:</label>
-              <input
-                type="text"
-                value={name}
-                onChange={(event) => setName(event.target.value)}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label>Bio:</label>
-              <textarea
-                value={bio}
-                onChange={(event) => setBio(event.target.value)}
-                className="form-control"
-              />
-            </div>
-            <div className="form-group">
-              <label>Avatar:</label>
-              <input
-                type="file"
-                onChange={(event) => setAvatar(event.target.files[0])}
-                className="form-control-file"
-              />
-            </div>
-            <button type="submit" className="btn btn-primary">
-              Update Profile
-            </button>
-          </form>
-          {error && <div className="alert alert-danger mt-3">{error}</div>}
-        </div>
-      </div>
-      <h2 className="text-center mt-5 mb-5">Profile</h2>
-      <div className="row justify-content-center">
-        <div className="col-md-6">
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Name: {user.name}</h5>
-              <p className="card-text">Bio: {user.bio}</p>
-              {profilePicture && (
-                <img
-                  src={profilePicture}
-                  alt="Avatar"
-                  className="img-fluid rounded-circle"
-                />
-              )}
-            </div>
+    <div className="profile-container">
+      <h2>User Profile</h2>
+
+      {!editing ? (
+        <div className="profile-info">
+          <div>
+            <img
+              src={
+                profile.avatar
+                  ? `http://localhost:2000/uploads/${profile.avatar}`
+                  : "https://via.placeholder.com/150"
+              }
+              alt="User Avatar"
+              className="img-fluid rounded-circle"
+              style={{ width: "150px", height: "150px" }}
+            />
           </div>
+          <h3>{profile.name}</h3>
+          <p>{profile.bio}</p>
+          <button
+            className="btn btn-primary mt-3"
+            onClick={() => setEditing(true)}
+          >
+            Edit Profile
+          </button>
         </div>
-      </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="profile-form">
+          <div className="mb-3">
+            <label htmlFor="name" className="form-label">
+              Name:
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="form-control"
+              value={profile.name}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="bio" className="form-label">
+              Bio:
+            </label>
+            <textarea
+              id="bio"
+              name="bio"
+              className="form-control"
+              value={profile.bio}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="avatar" className="form-label">
+              Avatar:
+            </label>
+            <input
+              type="file"
+              id="avatar"
+              name="avatar"
+              className="form-control"
+              onChange={handleFileChange}
+            />
+          </div>
+          <button type="submit" className="btn btn-secondary">
+            Update Profile
+          </button>
+          <button
+            type="button"
+            className="btn btn-link"
+            onClick={() => setEditing(false)}
+          >
+            Cancel
+          </button>
+        </form>
+      )}
     </div>
   );
 };

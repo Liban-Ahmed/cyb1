@@ -197,40 +197,78 @@ function ensureAuthenticated(req, res, next) {
   }
   res.status(401).json({ message: "Please log in to access this resource." });
 }
-// User Profile Routes
-const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
 // Update user profile
-app.put("/profile", upload.single("avatar"), async (req, res) => {
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+
+// Check if 'uploads' directory exists, if not, create it
+const uploadDir = path.join(__dirname, "uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/");
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`);
+  },
+});
+
+const upload = multer({ storage });
+
+// Serve static files from the 'uploads' folder
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Update profile route
+app.put(
+  "/profile",
+  ensureAuthenticated,
+  upload.single("avatar"),
+  async (req, res) => {
+    try {
+      const userId = req.user.id;
+      const { name, bio } = req.body;
+      const avatar = req.file ? req.file.filename : null;
+
+      const updateData = { name, bio };
+      if (avatar) {
+        updateData.avatar = avatar;
+      }
+
+      const user = await User.findByIdAndUpdate(userId, updateData, {
+        new: true,
+      });
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      res.json(user);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+      res.status(500).json({ message: "Error updating profile" });
+    }
+  }
+);
+
+// Get profile route
+app.get("/profile", ensureAuthenticated, async (req, res) => {
   try {
     const userId = req.user.id;
-    const { name, bio } = req.body;
-    const avatar = req.file ? req.file.filename : null;
-
-    // Update user profile in database
-    const user = await User.findByIdAndUpdate(
-      userId,
-      { name, bio, avatar },
-      { new: true }
-    );
+    const user = await User.findById(userId, "username email name bio avatar");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
     res.json(user);
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error updating profile" });
+    console.error("Error retrieving profile:", error);
+    res.status(500).json({ message: "Error retrieving profile" });
   }
 });
 
-// Get user profile
-app.get("/profile", async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const user = await User.findById(userId);
-    res.json(user);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error fetching profile" });
-  }
-});
 // Product Routes using Native MongoDB Driver
 
 // Get all products

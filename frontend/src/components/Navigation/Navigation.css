@@ -1,98 +1,43 @@
-.custom-dropdown-menu {
-    position: absolute;
-    right: 0;
-    left: auto;
-    border: 1px solid rgba(0,0,0,.15); /* Add border style to ensure it's visible */
-    border-radius: .25rem;
-  }
-  .navigation-title-container {
-    background-color: #C8102E;
-    padding: 20px;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end; /* Align items to the bottom */
-  }
-  
-  .nav-pills .nav-item {
-    margin-bottom: 0px; /* Add some bottom margin to separate the buttons */
-  }
-  
-  
-  /* Override button styles */
-  .btn {
-    color: #ffffff; /* Set button text color */
-    background-color: #F1BE48; /* Set button background color */
-    border-color: #F1BE48; /* Set button border color */
-    font-family: 'Impact', sans-serif;
-  }
-  
-  /* Active button styles */
-.nav-pills .nav-link.active,
-.nav-pills .nav-link.active:focus,
-.nav-pills .nav-link.active:hover,
-.nav-pills .nav-item .catalog.active,
-.nav-pills .nav-item .catalog.active:focus,
-.nav-pills .nav-item .catalog.active:hover {
-  background-color: #F1BE48; /* Set active button background color */
-  border-color: #F1BE48; /* Set active button border color */
-  color: #ffffff; /* Set active button text color */
-  font-family: 'Impact', sans-serif; /* Set font to Impact */
+/* Navigation Styles */
+.navigation-container {
+  background-color: #C8102E;
+  padding: 10px 20px;
 }
 
-/* Catalog button styles */
-.nav-pills .nav-item .catalog {
-  color: white; /* Set the text color to white for the Catalog button */
-  font-family: 'Impact', sans-serif; /* Set font to Impact */
-  font-size: 1.5rem;
+.navigation-title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
 }
 
-
-
-
-
-  .nav-pills .nav-link.catalog:not(.active) {
-    color: white; /* Set the text color to white for the Catalog button when it is not active */
-    font-size: 1.5rem;
-  }
-  
-  .nav-pills .nav-link.catalog:not(.active),
-.nav-pills .nav-link.dropdown-toggle {
-  font-family: 'Impact', sans-serif; /* Use Impact font family */
-  font-size: 16px; /* Set font size */
+.nav-pills .nav-item {
+  margin-bottom: 0;
 }
-  .main-store-logo {
-    max-width: 225px; /* Adjust the maximum width as needed */
-    height: auto; /* Maintain aspect ratio */
-  }
-  /* Override button styles */
-button {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  .nav-link.dropdown-toggle {
-    color: white; /* Set the text color to white */
-  }
-  .nav-link.dropdown-toggle:not(.active) {
-    color: white; /* Set the text color to white */
-  }
-    
-  .navigation-title-container {
-    position: relative;
-  }
-  
-  .view-cart-button {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    margin: 10px;
-    font-size: 2rem;
-  }
-  
+
+.main-store-logo {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Avatar Placeholder */
+.avatar-placeholder {
+  width: 35px; /* Size for the avatar placeholder */
+  height: 35px;
+  background-color: #F1BE48; /* Placeholder color */
+  color: #ffffff; /* Text color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px; /* Adjusted for a smaller appearance */
+  border-radius: 50%;
+  text-transform: uppercase;
+  font-family: 'Arial', sans-serif; /* Simple font for better readability */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.avatar-placeholder:hover {
+  background-color: #e09f32; /* Darker shade for hover effect */
+  cursor: pointer;
+}
