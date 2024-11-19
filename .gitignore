@@ -14,7 +14,6 @@ resources/.arch-internal-preview.css
 .arch-internal-preview.css
 # Node modules
 node_modules/
-
 # Build output
 build/
 dist/

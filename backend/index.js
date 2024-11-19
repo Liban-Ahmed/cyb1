@@ -1,6 +1,6 @@
-// index.js
-
+require("dotenv").config();
 const express = require("express");
+const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -10,29 +10,16 @@ const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
 const { MongoClient } = require("mongodb");
 
-const app = express();
-const port = 2000;
+console.log("MongoDB URI:", process.env.MONGODB_URI); // Add this for debugging
 
-// MongoDB Connection for Mongoose (User Authentication)
 mongoose
-  .connect("mongodb://localhost:27017/reactdata", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGODB_URI)
   .then(() =>
     console.log("Mongoose connected to MongoDB database successfully")
   )
   .catch((error) => console.error("Error connecting Mongoose:", error));
 
-// Mongoose User Model
-const User = require("./models/User");
-
-// MongoDB Connection using Native Driver (Products and Cart)
-const client = new MongoClient("mongodb://localhost:27017", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const dbName = "reactdata";
+const client = new MongoClient(process.env.MONGODB_URI);
 
 async function connectToMongoDB() {
   try {
@@ -49,7 +36,7 @@ connectToMongoDB();
 // Configure CORS to allow credentials
 app.use(
   cors({
-    origin: "http://localhost:3000", // Replace with your frontend URL
+    origin: process.env.CLIENT_URL || "http://localhost:3000", // Replace with your frontend URL
     credentials: true, // Allow cookies to be sent
   })
 );
@@ -60,11 +47,11 @@ app.use(bodyParser.json());
 // Initialize session middleware
 app.use(
   session({
-    secret: "yourSecretKey", // Replace with a secure secret
+    secret: process.env.SESSION_SECRET, // Replace with secure secret
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: false, // Set to true if using HTTPS
+      secure: process.env.NODE_ENV === "production", // Secure cookies in production
       httpOnly: true,
       sameSite: "lax",
     },
@@ -220,6 +207,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Serve static files from the 'uploads' folder
+app.use(express.static("public"));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Update profile route
@@ -450,6 +438,7 @@ app.put("/cart", ensureAuthenticated, async (req, res) => {
 });
 
 // Start the Server
+const port = process.env.PORT || 2000;
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
